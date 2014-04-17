@@ -46,7 +46,7 @@
   window.stik.boundary( { as: "$dom", to: methods } );
 }());
 
-stik.dom( "hasClass", function(){
+window.stik.dom( "hasClass", function(){
   return function hasClass( elm, selector ){
     var className = " " + selector + " ";
     return ( " " + elm.className + " " ).
@@ -55,7 +55,7 @@ stik.dom( "hasClass", function(){
   };
 });
 
-stik.dom( "removeClass", function( hasClass ){
+window.stik.dom( "removeClass", function( hasClass ){
   return function removeClass( elm, selector ){
     if ( hasClass( elm, selector ) ){
       var regex = new RegExp( "\\b\\s?" + selector + "\\b", "g" );
@@ -64,7 +64,7 @@ stik.dom( "removeClass", function( hasClass ){
   };
 });
 
-stik.dom( "addClass", function( hasClass ){
+window.stik.dom( "addClass", function( hasClass ){
   return function addClass( elm, selector ){
     if ( !hasClass( elm, selector ) ){
       elm.className = ( elm.className + " " + selector ).trim();
@@ -72,7 +72,7 @@ stik.dom( "addClass", function( hasClass ){
   };
 });
 
-stik.dom( "toggleClass", function( hasClass, addClass, removeClass ){
+window.stik.dom( "toggleClass", function( hasClass, addClass, removeClass ){
   return function toggleClass( elm, selector ){
     if ( hasClass( elm, selector ) ) {
       removeClass( elm, selector );
@@ -82,13 +82,13 @@ stik.dom( "toggleClass", function( hasClass, addClass, removeClass ){
   };
 });
 
-stik.dom( "hide", function(){
+window.stik.dom( "hide", function(){
   return function hideElm( elm ){
     elm.style.display = "none";
   };
 });
 
-stik.dom( "show", function(){
+window.stik.dom( "show", function(){
   return function showElm( elm ){
     if ( elm.style.removeProperty ) {
       elm.style.removeProperty( "display" );
@@ -98,13 +98,13 @@ stik.dom( "show", function(){
   };
 });
 
-stik.dom( "remove", function(){
+window.stik.dom( "remove", function(){
   return function removeElm( elm ){
     elm.parentNode.removeChild( elm );
   };
 });
 
-stik.dom( "parse", function(){
+window.stik.dom( "parse", function(){
   return function( elmStr ){
     var div = document.createElement( "div" );
     div.innerHTML = elmStr;
@@ -113,10 +113,10 @@ stik.dom( "parse", function(){
     } else {
       return div.firstChild;
     }
-  }
+  };
 });
 
-stik.dom( "append", function(){
+window.stik.dom( "append", function(){
   return function append( parent, newChild ) {
     if ( typeof newChild === "string" ) {
       var div = document.createElement( "div" );
@@ -131,7 +131,7 @@ stik.dom( "append", function(){
   };
 });
 
-stik.dom( "prepend", function( insertBefore, append ){
+window.stik.dom( "prepend", function( insertBefore, append ){
   return function prepend( parent, newChild ){
     if ( parent.childNodes.length > 0 ) {
       insertBefore( parent.firstChild, newChild );
@@ -141,7 +141,7 @@ stik.dom( "prepend", function( insertBefore, append ){
   };
 });
 
-stik.dom( "insertAfter", function(){
+window.stik.dom( "insertAfter", function(){
   return function insertAfter( referenceNode, newChild ) {
     if ( typeof newChild === "string" ) {
       var div = document.createElement( "div" );
@@ -160,7 +160,7 @@ stik.dom( "insertAfter", function(){
   };
 });
 
-stik.dom( "insertBefore", function( ){
+window.stik.dom( "insertBefore", function( ){
   return function insertBefore( referenceNode, newChild ){
     if ( typeof newChild === "string" ) {
       var div = document.createElement( "div" );
@@ -179,7 +179,7 @@ stik.dom( "insertBefore", function( ){
   };
 });
 
-stik.dom( "serialize", function(){
+window.stik.dom( "serialize", function(){
   return function serializeForm( form ){
     // https://raw.githubusercontent.com/yurikoval/serialize-form/master/serialize.js
     var i, j, q;

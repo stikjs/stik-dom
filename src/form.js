@@ -1,4 +1,4 @@
-stik.dom( "serialize", function(){
+window.stik.dom( "serialize", function(){
   return function serializeForm( form ){
     // https://raw.githubusercontent.com/yurikoval/serialize-form/master/serialize.js
     var i, j, q;
