@@ -1,0 +1,31 @@
+{
+  "name": "stik-dom.js",
+  "version": "1.0.0",
+  "description": "DOM manipulation utils for Stik.JS",
+  "main": "stik-dom.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stikjs/stik-dom.git"
+  },
+  "keywords": [
+    "stikjs",
+    "dom"
+  ],
+  "author": "Lukas Alexandre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stikjs/stik-dom/issues"
+  },
+  "homepage": "https://github.com/stikjs/stik-dom",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.11",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-jasmine": "~0.5.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-template-jasmine-istanbul": "~0.2.5"
+  }
+}
