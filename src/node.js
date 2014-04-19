@@ -112,7 +112,7 @@ window.stik.dom( "insertAfter", function(){
   };
 });
 
-window.stik.dom( "insertBefore", function( ){
+window.stik.dom( "insertBefore", function(){
   return function insertBefore( referenceNode, newChild ){
     if ( typeof newChild === "string" ) {
       var div = document.createElement( "div" );
@@ -129,4 +129,41 @@ window.stik.dom( "insertBefore", function( ){
       );
     }
   };
+});
+
+window.stik.dom( "data", function(){
+  return function data( elm ){
+    var attrs = {},
+        attr, name;
+
+    for ( attr in elm.attributes ) {
+      if ( elm.attributes[ attr ].value ) {
+        name = elm.attributes[ attr ].name;
+        if (name.match(/^data-/m)) {
+          attrs[ parseName( name ) ] =
+            elm.attributes[ attr ].value;
+        }
+      }
+    }
+
+    function parseName( name ){
+      return toCamelCase( name.match( /(data-)(.+)/ )[ 2 ] );
+    }
+
+    function toCamelCase(name){
+      return name.replace( /-([a-z])/g, function( match ){
+        return match[ 1 ].toUpperCase();
+      });
+    }
+
+    return attrs;
+  };
+});
+
+window.stik.boundary({
+  as: "$data",
+  resolvable: true,
+  to: function( $template, $dom ){
+    return $dom.data( $template );
+  }
 });

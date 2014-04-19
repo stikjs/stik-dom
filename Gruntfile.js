@@ -2,8 +2,7 @@ module.exports = function(grunt){
   var srcFiles = [
     'src/module.js',
     'src/node.js',
-    'src/form.js',
-    'src/dom_lab.js'
+    'src/form.js'
   ];
 
   grunt.initConfig({
@@ -12,7 +11,10 @@ module.exports = function(grunt){
       banner: '// Version: <%= pkg.version %> | From: <%= grunt.template.today("dd-mm-yyyy") %>\n\n'
     },
     jasmine: {
-      src: ['stik.js'].concat(srcFiles),
+      src: [
+        'node_modules/stik.js/stik.js',
+        'node_modules/stik-labs.js/stik-labs.js'
+      ].concat(srcFiles),
       options: {
         specs: [
           'specs/*_spec.js'
