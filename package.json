@@ -1,6 +1,6 @@
 {
   "name": "stik-dom.js",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0",
   "description": "DOM manipulation utils for Stik.JS",
   "main": "stik-dom.js",
   "scripts": {
