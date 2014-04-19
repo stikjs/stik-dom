@@ -464,5 +464,19 @@ describe('$dom', function(){
         "isMoreActive": "true"
       });
     });
+
+    it("should also be accesible as a boundary", function(){
+      var template = '',
+          dom = { data: jasmine.createSpy('$dom') };
+
+      var dataHelper = stik.labs.boundary({
+        name: "$data"
+      }).run({
+        $template: template,
+        $dom: dom
+      });
+
+      expect(dom.data).toHaveBeenCalledWith(template);
+    });
   });
 });
