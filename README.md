@@ -1,4 +1,4 @@
-Stik DOM
+#Stik DOM
 
 [![Build Status](https://travis-ci.org/stikjs/stik-dom.svg)](https://travis-ci.org/stikjs/stik-dom)
 [![Code Climate](https://codeclimate.com/github/stikjs/stik-dom.png)](https://codeclimate.com/github/stikjs/stik-dom)
@@ -49,5 +49,29 @@ stik.behavior("active-on-click", function($template, $dom){
   $template.addEventListener "click", function(){
     $dom.toggleClass($template, "active");
   };
+});
+```
+
+###data
+Captures all the `data-*` attributes defined in the template and gives you an object to easily access them.
+
+####Using it
+```html
+<div class="lightsaber-clash" data-force="strong" data-direction="downwards"></div>
+```
+
+```javascript
+stik.behavior("lightsaber-clash", function($template, $dom){
+  $dom.data($template).force // "strong"
+  $dom.data($template).direction // "downwards"
+});
+```
+
+This module can also be injected as a boundary that would use the current `$template` as the extraction point.
+
+```javascript
+stik.behavior("lightsaber-clash", function($data){
+  $data.force
+  ...
 });
 ```
