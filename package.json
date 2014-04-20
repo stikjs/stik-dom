@@ -1,6 +1,6 @@
 {
   "name": "stik-dom.js",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "DOM manipulation utils for Stik.JS",
   "main": "stik-dom.js",
   "scripts": {
@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/stikjs/stik-dom",
   "dependencies": {
-    "stik.js": "1.0.0-alpha"
+    "stik.js": "1.x"
   },
   "devDependencies": {
-    "stik-labs.js": "1.1.1",
+    "stik-labs.js": "1.x",
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.11",
     "grunt-contrib-uglify": "~0.2.7",

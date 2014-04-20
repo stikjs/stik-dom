@@ -1,4 +1,4 @@
-// Version: 1.0.0 | From: 19-04-2014
+// Version: 0.1.0 | From: 20-04-2014
 
 (function(){
   var methods = {},
