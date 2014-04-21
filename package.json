@@ -1,6 +1,6 @@
 {
   "name": "stik-dom.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DOM manipulation utils for Stik.JS",
   "main": "stik-dom.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/stikjs/stik-dom",
   "dependencies": {
-    "stik.js": "1.x"
+    "stik-core.js": "1.x"
   },
   "devDependencies": {
     "stik-labs.js": "0.x",

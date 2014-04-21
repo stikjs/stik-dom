@@ -12,7 +12,7 @@ module.exports = function(grunt){
     },
     jasmine: {
       src: [
-        'node_modules/stik.js/stik.js',
+        'node_modules/stik-core.js/stik-core.js',
         'node_modules/stik-labs.js/stik-labs.js'
       ].concat(srcFiles),
       options: {
