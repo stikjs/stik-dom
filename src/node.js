@@ -55,15 +55,7 @@ window.stik.dom( "isVisible", function( isHidden ){
 
 window.stik.dom( "show", function( isHidden ){
   return function showElm( elm ){
-    if ( elm.style.display === "none" ) {
-      if ( elm.style.removeProperty ) {
-        elm.style.removeProperty( "display" );
-      } else {
-        elm.style.removeAttribute( "display" );
-      }
-    } else if ( isHidden( elm ) ) {
-      elm.style.display = "block";
-    }
+    elm.style.display = "block";
   };
 });
 

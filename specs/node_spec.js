@@ -180,7 +180,7 @@ describe('$dom', function(){
       expect(elm.style.display).toEqual("block");
     });
 
-    it("when hidden should remove the property", function(){
+    it("when hidden", function(){
       var elm = document.createElement("div");
       elm.style.display = "none";
 
@@ -190,7 +190,7 @@ describe('$dom', function(){
 
       showHelper(elm);
 
-      expect(elm.style.display).toEqual("");
+      expect(elm.style.display).toEqual("block");
     });
   });
 
