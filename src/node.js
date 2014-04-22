@@ -40,12 +40,29 @@ window.stik.dom( "hide", function(){
   };
 });
 
-window.stik.dom( "show", function(){
+window.stik.dom( "isHidden", function(){
+  return function isHidden( elm ) {
+    // return elm.offsetWidth > 0 && elm.offsetHeight > 0;
+    return elm.offsetParent === null;
+  }
+});
+
+window.stik.dom( "isVisible", function( isHidden ){
+  return function isVisible( elm ) {
+    return !isHidden( elm );
+  }
+});
+
+window.stik.dom( "show", function( isHidden ){
   return function showElm( elm ){
-    if ( elm.style.removeProperty ) {
-      elm.style.removeProperty( "display" );
-    } else {
-      elm.style.removeAttribute( "display" );
+    if ( elm.style.display === "none" ) {
+      if ( elm.style.removeProperty ) {
+        elm.style.removeProperty( "display" );
+      } else {
+        elm.style.removeAttribute( "display" );
+      }
+    } else if ( isHidden( elm ) ) {
+      elm.style.display = "block";
     }
   };
 });

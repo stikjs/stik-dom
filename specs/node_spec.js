@@ -177,7 +177,7 @@ describe('$dom', function(){
 
       showHelper(elm);
 
-      expect(elm.style.display).toEqual("");
+      expect(elm.style.display).toEqual("block");
     });
 
     it("when hidden should remove the property", function(){
