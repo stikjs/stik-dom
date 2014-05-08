@@ -111,6 +111,19 @@ describe('$dom', function(){
 
       expect(elm.className).toEqual("not-active");
     });
+
+    it("with a close enough class", function(){
+      var elm = document.createElement("div");
+      elm.className = "active-by-click active";
+
+      var removeClassHelper = stik.labs.dom({
+        name: "removeClass"
+      }).run();
+
+      removeClassHelper(elm, "active");
+
+      expect(elm.className).toEqual("active-by-click");
+    });
   });
 
   describe("toggleClass", function(){
