@@ -19,7 +19,7 @@ window.stik.dom( "removeClass", function( hasClass ){
     for (var i = 0; i < classNames.length; i++) {
       if ( hasClass( elm, classNames[ i ] ) ){
         var regex = new RegExp( "(^|\\s)?" + classNames[ i ] + "(\\s|$)", "g" );
-        elm.className = elm.className.replace( regex, "" );
+        elm.className = elm.className.replace( regex, " " ).trim();
       }
     }
   };

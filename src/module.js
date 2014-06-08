@@ -1,4 +1,4 @@
-(function(){
+(function(window){
   var methods = {},
       modules = {},
       tmpDependencies = {};
@@ -42,4 +42,4 @@
   };
 
   window.stik.boundary( { as: "$dom", to: methods } );
-}());
+})(window);

@@ -176,6 +176,19 @@ describe('$dom', function(){
 
       expect(elm.className).toEqual("active");
     });
+
+    it("removing the middle class", function(){
+      var elm = document.createElement("div");
+      elm.className = "cc-number visa identified";
+
+      var removeClass = stik.labs.dom({
+        name: "removeClass"
+      }).run();
+
+      removeClass(elm, "visa");
+
+      expect(elm.className).toEqual("cc-number identified");
+    });
   });
 
   describe("toggleClass", function(){

@@ -1,6 +1,6 @@
-// Version: 0.4.0 | From: 08-06-2014
+// Version: 0.4.1 | From: 08-06-2014
 
-(function(){
+(function(window){
   var methods = {},
       modules = {},
       tmpDependencies = {};
@@ -44,7 +44,7 @@
   };
 
   window.stik.boundary( { as: "$dom", to: methods } );
-}());
+})(window);
 
 window.stik.dom( "hasClass", function(){
   return function hasClass( elm, selector ){
@@ -67,7 +67,7 @@ window.stik.dom( "removeClass", function( hasClass ){
     for (var i = 0; i < classNames.length; i++) {
       if ( hasClass( elm, classNames[ i ] ) ){
         var regex = new RegExp( "(^|\\s)?" + classNames[ i ] + "(\\s|$)", "g" );
-        elm.className = elm.className.replace( regex, "" );
+        elm.className = elm.className.replace( regex, " " ).trim();
       }
     }
   };
