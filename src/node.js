@@ -38,8 +38,12 @@ window.stik.dom( "addClass", function( hasClass ){
 });
 
 window.stik.dom( "toggleClass", function( hasClass, addClass, removeClass ){
-  return function toggleClass( elm, selector ){
-    if ( hasClass( elm, selector ) ) {
+  return function toggleClass( elm, selector, forceAdd ){
+    if ( forceAdd === true ) {
+      addClass( elm, selector );
+    } else if ( forceAdd === false ) {
+      removeClass( elm, selector );
+    } else if ( hasClass( elm, selector ) ) {
       removeClass( elm, selector );
     } else if ( !hasClass( elm, selector ) ) {
       addClass( elm, selector );

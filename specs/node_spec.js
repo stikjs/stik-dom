@@ -156,11 +156,11 @@ describe('$dom', function(){
     it("whithout the class", function(){
       var elm = document.createElement("div");
 
-      var toggleClassHelper = stik.labs.dom({
+      var toggleClass = stik.labs.dom({
         name: "toggleClass"
       }).run();
 
-      toggleClassHelper(elm, "active");
+      toggleClass(elm, "active");
 
       expect(elm.className).toEqual("active");
     });
@@ -169,11 +169,11 @@ describe('$dom', function(){
       var elm = document.createElement("div");
       elm.className = "active";
 
-      var toggleClassHelper = stik.labs.dom({
+      var toggleClass = stik.labs.dom({
         name: "toggleClass"
       }).run();
 
-      toggleClassHelper(elm, "active");
+      toggleClass(elm, "active");
 
       expect(elm.className).toEqual("");
     });
@@ -182,13 +182,47 @@ describe('$dom', function(){
       var elm = document.createElement("div");
       elm.className = "not-active";
 
-      var toggleClassHelper = stik.labs.dom({
+      var toggleClass = stik.labs.dom({
         name: "toggleClass"
       }).run();
 
-      toggleClassHelper(elm, "active");
+      toggleClass(elm, "active");
 
       expect(elm.className).toEqual("not-active active");
+    });
+
+    it("forcing addition", function(){
+      var elm = document.createElement("div");
+      elm.className = "active";
+
+      addClassMock = jasmine.createSpy("addClassMock");
+
+      var toggleClass = stik.labs.dom({
+        name: "toggleClass"
+      }).run({
+        addClass: addClassMock
+      });
+
+      toggleClass(elm, "active", true);
+
+      expect(addClassMock).toHaveBeenCalledWith(elm, "active");
+    });
+
+    it("forcing removal", function(){
+      var elm = document.createElement("div");
+      elm.className = "active";
+
+      removeClassMock = jasmine.createSpy("removeClassMock");
+
+      var toggleClass = stik.labs.dom({
+        name: "toggleClass"
+      }).run({
+        removeClass: removeClassMock
+      });
+
+      toggleClass(elm, "active", false);
+
+      expect(removeClassMock).toHaveBeenCalledWith(elm, "active");
     });
   });
 
