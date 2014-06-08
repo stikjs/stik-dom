@@ -150,6 +150,32 @@ describe('$dom', function(){
 
       expect(elm.className).toEqual("active-by-click");
     });
+
+    it("with multiple classes", function(){
+      var elm = document.createElement("div");
+      elm.className = "should-be-active active and-functional";
+
+      var removeClass = stik.labs.dom({
+        name: "removeClass"
+      }).run();
+
+      removeClass(elm, "should-be-active and-functional");
+
+      expect(elm.className).toEqual("active");
+    });
+
+    it("with an array of classes", function(){
+      var elm = document.createElement("div");
+      elm.className = "should-be-active and-functional active";
+
+      var removeClass = stik.labs.dom({
+        name: "removeClass"
+      }).run();
+
+      removeClass(elm, ["should-be-active", "and-functional"]);
+
+      expect(elm.className).toEqual("active");
+    });
   });
 
   describe("toggleClass", function(){

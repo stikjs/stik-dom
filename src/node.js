@@ -8,10 +8,19 @@ window.stik.dom( "hasClass", function(){
 });
 
 window.stik.dom( "removeClass", function( hasClass ){
-  return function removeClass( elm, selector ){
-    if ( hasClass( elm, selector ) ){
-      var regex = new RegExp( "(^|\\s)?" + selector + "(\\s|$)", "g" );
-      elm.className = elm.className.replace( regex, "" );
+  return function removeClass( elm, className ){
+    var classNames = [];
+    if ( Object.prototype.toString.call( className ) === "[object Array]" ) {
+      classNames = className;
+    } else {
+      classNames = className.split(" ");
+    }
+
+    for (var i = 0; i < classNames.length; i++) {
+      if ( hasClass( elm, classNames[ i ] ) ){
+        var regex = new RegExp( "(^|\\s)?" + classNames[ i ] + "(\\s|$)", "g" );
+        elm.className = elm.className.replace( regex, "" );
+      }
     }
   };
 });
