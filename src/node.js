@@ -2,8 +2,8 @@ window.stik.dom( "hasClass", function(){
   return function hasClass( elm, selector ){
     var className = " " + selector + " ";
     return ( " " + elm.className + " " ).
-      replace( /[\n\t]/g, " " ).
-      indexOf( className ) > -1;
+      replace( /[\t\r\n\f]/g, " " ).
+      indexOf( className ) >= 0;
   };
 });
 
@@ -11,18 +11,27 @@ window.stik.dom( "removeClass", function( hasClass ){
   return function removeClass( elm, selector ){
     if ( hasClass( elm, selector ) ){
       var regex = new RegExp( "(^|\\s)?" + selector + "(\\s|$)", "g" );
-      elm.className = elm.className.replace( regex, '' );
+      elm.className = elm.className.replace( regex, "" );
     }
   };
 });
 
 window.stik.dom( "addClass", function( hasClass ){
   return function addClass( elm, className ){
-    if ( !hasClass( elm, className ) ){
-      if ( elm.classList ) {
-        elm.classList.add( className );
-      } else {
-        elm.className = ( elm.className + " " + className ).trim();
+    var classNames = [];
+    if ( Object.prototype.toString.call( className ) === "[object Array]" ) {
+      classNames = className;
+    } else {
+      classNames = className.split(" ");
+    }
+
+    for (var i = 0; i < classNames.length; i++) {
+      if ( !hasClass( elm, classNames[ i ] ) ){
+        if ( elm.classList ) {
+          elm.classList.add( classNames[ i ] );
+        } else {
+          elm.className = ( elm.className + " " + classNames[ i ] ).trim();
+        }
       }
     }
   };

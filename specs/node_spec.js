@@ -71,6 +71,32 @@ describe('$dom', function(){
 
       expect(elm.className).toEqual("not-active active");
     });
+
+    it("with multiple classes", function(){
+      var elm = document.createElement("div");
+      elm.className = "active";
+
+      var addClass = stik.labs.dom({
+        name: "addClass"
+      }).run();
+
+      addClass(elm, "should-be-active and-functional");
+
+      expect(elm.className).toEqual("active should-be-active and-functional");
+    });
+
+    it("with an array of classes", function(){
+      var elm = document.createElement("div");
+      elm.className = "active";
+
+      var addClass = stik.labs.dom({
+        name: "addClass"
+      }).run();
+
+      addClass(elm, ["should-be-active", "and-functional"]);
+
+      expect(elm.className).toEqual("active should-be-active and-functional");
+    });
   });
 
   describe("removeClass", function(){
