@@ -1,4 +1,4 @@
-describe('$dom', function(){
+describe("$dom", function(){
   describe("hasClass", function(){
     it("whithout the class", function(){
       var elm = document.createElement("div");
@@ -309,7 +309,7 @@ describe('$dom', function(){
   describe("remove", function(){
     it("should remove a child from its parent", function(){
       var template = document.createElement("div");
-      template.innerHTML = '<span></span>';
+      template.innerHTML = "<span></span>";
 
       var removeHelper = stik.labs.dom({
         name: "remove"
@@ -578,8 +578,8 @@ describe('$dom', function(){
     });
 
     it("should also be accesible as a boundary", function(){
-      var template = '',
-          dom = { data: jasmine.createSpy('$dom') };
+      var template = "",
+          dom = { data: jasmine.createSpy("$dom") };
 
       var dataHelper = stik.labs.boundary({
         name: "$data"
@@ -589,6 +589,30 @@ describe('$dom', function(){
       });
 
       expect(dom.data).toHaveBeenCalledWith(template);
+    });
+  });
+
+  describe("$elm", function(){
+    it("should wrap the template as a stik-dom obj", function(){
+      var template = document.createElement("div");
+
+      var elm = stik.labs.boundary({
+        name: "$elm"
+      }).run({
+        $template: template
+      });
+
+      elm.addClass("active");
+
+      expect(elm.hasClass("active")).toBeTruthy();
+
+      elm.removeClass("active");
+
+      expect(elm.hasClass("active")).toBeFalsy();
+
+      elm.toggleClass("active", false);
+
+      expect(elm.hasClass("active")).toBeFalsy();
     });
   });
 });

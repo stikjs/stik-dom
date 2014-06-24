@@ -1,13 +1,13 @@
-(function(window){
+(function(stik){
   var methods = {},
       modules = {},
       tmpDependencies = {};
 
-  window.stik.dom = function dom( as, func ){
+  stik.dom = function dom( as, func ){
     if ( !as ) { throw "Stik: DOM needs a name"; }
     if ( !func || typeof func !== "function" ) { throw "Stik: DOM needs a function"; }
 
-    modules[ as ] = window.stik.injectable({
+    modules[ as ] = stik.injectable({
       module: func,
       resolvable: true
     });
@@ -31,7 +31,7 @@
 
   methods.pushDoubles = function pushDoubles( doubles ){
     for ( var name in doubles ) {
-      tmpDependencies[ name ] = window.stik.injectable({
+      tmpDependencies[ name ] = stik.injectable({
         module: doubles[ name ]
       });
     }
@@ -41,5 +41,9 @@
     tmpDependencies = {};
   };
 
-  window.stik.boundary( { as: "$dom", to: methods } );
-})(window);
+  stik.dom.signatures = function signatures(){
+    return Object.keys(modules);
+  }
+
+  stik.boundary( { as: "$dom", to: methods } );
+})(window.stik);
