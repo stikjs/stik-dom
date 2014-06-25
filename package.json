@@ -1,10 +1,10 @@
 {
-  "name": "stik-dom.js",
+  "name": "stik-dom",
   "version": "0.5.0",
   "description": "DOM manipulation utils for Stik.JS",
-  "main": "stik-dom.js",
+  "main": "dist/stik-dom.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -21,21 +21,15 @@
   },
   "homepage": "https://github.com/stikjs/stik-dom",
   "dependencies": {
-    "stik-core.js": "1.x"
+    "stik-core": "1.x"
   },
   "devDependencies": {
-    "stik-labs.js": "0.x",
-    "grunt": "~0.4.2",
-    "grunt-cli": "~0.1.11",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-jasmine": "~0.5.2",
-    "grunt-contrib-concat": "~0.3.0"
-  },
-  "banner": {
-    "divider": "// ==========================================================================\n",
-    "project": "// Project:   Stik DOM - DOM tooling for Stik.js\n",
-    "copyright": "// Copyright: Copyright 2013-2014 Lukas Alexandre\n",
-    "license": "// License:   Licensed under MIT license\n",
-    "licenseLink": "//            See https://github.com/stikjs/stik-dom/blob/master/LICENSE\n"
+    "gulp": "^3.8.2",
+    "gulp-concat": "^2.2.0",
+    "gulp-header": "^1.0.2",
+    "gulp-jasmine": "^0.2.0",
+    "gulp-uglify": "^0.3.1",
+    "jsdom": "^0.11.0",
+    "stik-labs": "0.x"
   }
 }

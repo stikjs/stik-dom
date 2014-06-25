@@ -1,3 +1,5 @@
+require("./spec_helper")
+
 describe("$dom", function(){
   describe("hasClass", function(){
     it("whithout the class", function(){
@@ -331,7 +333,7 @@ describe("$dom", function(){
 
       var parsedTemplate = parse(template);
 
-      expect(parsedTemplate instanceof HTMLElement).toBeTruthy();
+      expect(parsedTemplate instanceof window.HTMLElement).toBeTruthy();
     });
   });
 
