@@ -1,4 +1,4 @@
-(function(stik){
+(function( stik ){
   stik.boundary({
     as: "$elm",
     resolvable: true,
@@ -256,4 +256,4 @@
       return $dom.data( $template );
     }
   });
-})(window.stik);
+})( window.stik );

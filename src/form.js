@@ -1,4 +1,4 @@
-(function(stik){
+(function( stik ){
   stik.dom( "serialize", function(){
     return function serializeForm( form, asObj ){
       var i, j, q;
@@ -77,4 +77,4 @@
       }
     };
   });
-})(window.stik);
+})( window.stik );

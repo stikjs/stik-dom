@@ -1,5 +1,5 @@
 // Stik-dom - Version: 0.5.0 | From: 25-6-2014
-(function(stik){
+(function( stik ){
   var methods = {},
       modules = {},
       tmpDependencies = {};
@@ -47,9 +47,9 @@
   }
 
   stik.boundary( { as: "$dom", to: methods } );
-})(window.stik);
+})( window.stik );
 
-(function(stik){
+(function( stik ){
   stik.boundary({
     as: "$elm",
     resolvable: true,
@@ -307,9 +307,9 @@
       return $dom.data( $template );
     }
   });
-})(window.stik);
+})( window.stik );
 
-(function(stik){
+(function( stik ){
   stik.dom( "serialize", function(){
     return function serializeForm( form, asObj ){
       var i, j, q;
@@ -388,4 +388,4 @@
       }
     };
   });
-})(window.stik);
+})( window.stik );
