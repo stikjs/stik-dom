@@ -1,4 +1,4 @@
-// Stik-dom - Version: 0.5.0 | From: 25-6-2014
+// Stik-dom - Version: 0.5.1 | From: 25-6-2014
 (function( stik ){
   var methods = {},
       modules = {},
