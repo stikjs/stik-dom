@@ -1,4 +1,4 @@
-// Stik-dom - Version: 0.5.1 | From: 25-6-2014
+// Stik-dom - Version: 0.6.0 | From: 30-6-2014
 (function( stik ){
   var methods = {},
       modules = {},
@@ -72,7 +72,7 @@
 
   stik.dom( "hasClass", function(){
     return function hasClass( elm, selector ){
-      if (elm.classList) {
+      if ( elm.classList ) {
         return elm.classList.contains( selector );
       } else {
         var className = " " + selector + " ";
@@ -148,7 +148,6 @@
 
   stik.dom( "isHidden", function(){
     return function isHidden( elm ) {
-      // return elm.offsetWidth > 0 && elm.offsetHeight > 0;
       return elm.offsetParent === null;
     }
   });
@@ -293,6 +292,18 @@
           return child !== elm;
         }
       );
+    };
+  });
+
+  stik.dom( "find", function(){
+    return function( elm, selector ){
+      return elm.querySelector( selector );
+    };
+  });
+
+  stik.dom( "findAll", function(){
+    return function( elm, selector ){
+      return elm.querySelectorAll( selector );
     };
   });
 

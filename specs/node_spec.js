@@ -594,6 +594,36 @@ describe("$dom", function(){
     });
   });
 
+  describe("find", function(){
+    it("a child element", function(){
+      var template = document.createElement("div");
+      template.innerHTML = "<span class=\"child\"></span>";
+
+      var find = stik.labs.dom({
+        name: "find"
+      }).run();
+
+      expect(find(template, ".child").nodeName).toEqual("SPAN");
+    });
+  });
+
+  describe("findAll", function(){
+    it("all specified child elements", function(){
+      var template = document.createElement("div");
+      template.innerHTML = "<span class=\"child\"></span><input class=\"name\"/><br>";
+
+      var findAll = stik.labs.dom({
+        name: "findAll"
+      }).run();
+
+      var result = findAll(template, ".child, .name");
+
+      expect(result.length).toEqual(2);
+      expect(result[0].nodeName).toEqual("SPAN");
+      expect(result[1].nodeName).toEqual("INPUT");
+    });
+  });
+
   describe("$elm", function(){
     it("should wrap the template as a stik-dom obj", function(){
       var template = document.createElement("div");
