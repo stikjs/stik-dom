@@ -656,7 +656,7 @@ describe("$dom", function(){
     });
   });
 
-  describe("dblclick", function(){
+  describe("doubleClick", function(){
     it("should create a listener", function(){
       var template = jasmine.createSpyObj("template", ["addEventListener"]);
 
