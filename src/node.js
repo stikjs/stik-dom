@@ -262,6 +262,12 @@
     };
   });
 
+  stik.dom( "doubleClick", function(){
+    return function( elm, callback ){
+      elm.addEventListener( "dblclick", callback);
+    };
+  });
+
   function isArray( obj ){
     return Object.prototype.toString.call( obj ) === "[object Array]"
   }
