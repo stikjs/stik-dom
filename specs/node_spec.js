@@ -624,6 +624,22 @@ describe("$dom", function(){
     });
   });
 
+  describe("click", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var click = stik.labs.dom({
+        name: "click"
+      }).run();
+
+      click(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("click", jasmine.any(Function));
+    });
+  });
+
   describe("$elm", function(){
     it("should wrap the template as a stik-dom obj", function(){
       var template = document.createElement("div");

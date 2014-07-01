@@ -256,6 +256,12 @@
     };
   });
 
+  stik.dom( "click", function(){
+    return function( elm, callback ){
+      elm.addEventListener( "click", callback);
+    };
+  });
+
   function isArray( obj ){
     return Object.prototype.toString.call( obj ) === "[object Array]"
   }
