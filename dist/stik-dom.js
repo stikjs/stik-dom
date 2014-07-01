@@ -1,4 +1,4 @@
-// Stik-dom - Version: 0.7.0 | From: 1-7-2014
+// Stik-dom - Version: 0.7.1 | From: 1-7-2014
 (function( stik ){
   var methods = {},
       modules = {},
@@ -57,6 +57,7 @@
       var elm = {};
       var methods = stik.dom.signatures();
       var i = methods.length;
+      elm.template = $template;
       while (i--){
         (function(method){
           elm[method] = function(){
@@ -174,7 +175,7 @@
     return function parse( elmStr ){
       var tmp = document.implementation.createHTMLDocument();
       tmp.body.innerHTML = elmStr;
-      if ( tmp.body.children > 1 ) {
+      if ( tmp.body.children.length > 1 ) {
         return tmp.body.childNodes;
       } else {
         return tmp.body.firstChild;
