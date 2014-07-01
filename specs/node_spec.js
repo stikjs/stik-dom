@@ -954,6 +954,8 @@ describe("$dom", function(){
         $template: template
       });
 
+      expect(elm.template).toEqual(template);
+
       elm.addClass("active");
 
       expect(elm.hasClass("active")).toBeTruthy();

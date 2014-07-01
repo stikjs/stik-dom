@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.org/stikjs/stik-dom.svg)](https://travis-ci.org/stikjs/stik-dom)
 [![Code Climate](https://codeclimate.com/github/stikjs/stik-dom.png)](https://codeclimate.com/github/stikjs/stik-dom)
 
+##$dom
+Introduces a tiny set of DOM manipulation methods to facilitate your daily work
+
 ###addClass
 Adds the specified class to the element.
 
@@ -52,6 +55,47 @@ stik.behavior("active-on-click", function($template, $dom){
 });
 ```
 
+###hide
+Sets `display:none` on the element.
+
+```javascript
+stik.behavior("hide-on-click", function($template, $dom){
+  $template.onclick = function(){
+    $dom.hide($template);
+  };
+});
+```
+
+###show
+Sets `display:block` on the element.
+
+```javascript
+stik.behavior("delayed-display", function($template, $dom){
+  setTimeout(function(){
+    $dom.show($template);
+  }, 1000);
+});
+```
+
+###remove
+Removes the node from the DOM.
+
+```javascript
+stik.behavior("removable", function($template, $dom){
+  var removeBtn = $template.querySelector(".remove");
+  removeBtn.onclick = function(){
+    $dom.remove($template);
+  };
+});
+```
+
+###parse
+Parses the an HTML string as a DOM element.
+
+```javascript
+$dom.parse("<div></div>"); //
+```
+
 ###data
 Captures all the `data-*` attributes defined in the template and gives you an object to easily access them.
 
@@ -74,3 +118,5 @@ stik.behavior("lightsaber-clash", function($data){
   ...
 });
 ```
+
+##

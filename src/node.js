@@ -6,6 +6,7 @@
       var elm = {};
       var methods = stik.dom.signatures();
       var i = methods.length;
+      elm.template = $template;
       while (i--){
         (function(method){
           elm[method] = function(){
@@ -123,7 +124,7 @@
     return function parse( elmStr ){
       var tmp = document.implementation.createHTMLDocument();
       tmp.body.innerHTML = elmStr;
-      if ( tmp.body.children > 1 ) {
+      if ( tmp.body.children.length > 1 ) {
         return tmp.body.childNodes;
       } else {
         return tmp.body.firstChild;
