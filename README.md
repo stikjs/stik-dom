@@ -3,17 +3,19 @@
 [![Build Status](https://travis-ci.org/stikjs/stik-dom.svg)](https://travis-ci.org/stikjs/stik-dom)
 [![Code Climate](https://codeclimate.com/github/stikjs/stik-dom.png)](https://codeclimate.com/github/stikjs/stik-dom)
 
-##$dom
-Introduces a tiny set of DOM manipulation methods to facilitate your daily work
+Introduces a tiny set of DOM manipulation methods to facilitate your daily work with [Stik.js](https://github.com/stikjs/stik.js).
+
+##$elm
+Gives you access to all $dom module methods by wrapping the $template module with a delegator object, forwarding method calls to the $dom module while using the right $template for a given context.
 
 ###addClass
 Adds the specified class to the element.
 
 ```javascript
-stik.behavior("active-on-focus", function($template, $dom){
-  $template.onfocus = function(){
-    $dom.addClass($template, "active");
-  };
+stik.behavior("active-on-focus", function($elm){
+  $elm.focus(function(event){
+    $elm.addClass("active");
+  });
 });
 ```
 
@@ -21,10 +23,10 @@ stik.behavior("active-on-focus", function($template, $dom){
 Removes the specified class from the element.
 
 ```javascript
-stik.behavior("active-on-focus", function($template, $dom){
+stik.behavior("active-on-focus", function($elm){
   // ...
-  $template.onblur = function(){
-    $dom.removeClass($template, "active");
+  $elm.blur(function(event){
+    $elm.removeClass("active");
   };
 });
 ```
@@ -33,14 +35,14 @@ stik.behavior("active-on-focus", function($template, $dom){
 Checks whether the element has the specified class.
 
 ```javascript
-stik.behavior("active-on-click", function($template, $dom){
-  $template.addEventListener "click", function(){
-    if ($dom.hasClass($template, "active")) {
-      $dom.removeClass($template, "active");
+stik.behavior("active-on-click", function($elm){
+  $elm.click(function(){
+    if ($elm.hasClass("active")) {
+      $elm.removeClass("active");
     } else {
-      $dom.addClass($template, "active");
+      $elm.addClass("active");
     }
-  };
+  });
 });
 ```
 
@@ -48,10 +50,10 @@ stik.behavior("active-on-click", function($template, $dom){
 Toggles the specified class on the element.
 
 ```javascript
-stik.behavior("active-on-click", function($template, $dom){
-  $template.addEventListener "click", function(){
-    $dom.toggleClass($template, "active");
-  };
+stik.behavior("active-on-click", function($elm){
+  $elm.click(function(){
+    $elm.toggleClass("active");
+  });
 });
 ```
 
@@ -59,10 +61,10 @@ stik.behavior("active-on-click", function($template, $dom){
 Sets `display:none` on the element.
 
 ```javascript
-stik.behavior("hide-on-click", function($template, $dom){
-  $template.onclick = function(){
-    $dom.hide($template);
-  };
+stik.behavior("hideable", function($elm){
+  $elm.click(function(){
+    $elm.hide();
+  });
 });
 ```
 
@@ -70,9 +72,9 @@ stik.behavior("hide-on-click", function($template, $dom){
 Sets `display:block` on the element.
 
 ```javascript
-stik.behavior("delayed-display", function($template, $dom){
+stik.behavior("delayed-display", function($elm){
   setTimeout(function(){
-    $dom.show($template);
+    $elm.show();
   }, 1000);
 });
 ```
@@ -81,19 +83,64 @@ stik.behavior("delayed-display", function($template, $dom){
 Removes the node from the DOM.
 
 ```javascript
-stik.behavior("removable", function($template, $dom){
-  var removeBtn = $template.querySelector(".remove");
-  removeBtn.onclick = function(){
-    $dom.remove($template);
-  };
+stik.behavior("removable", function($elm){
+  var removeBtn = $elm.find(".remove");
+  removeBtn.click(function(event){
+    $elm.remove();
+  });
 });
 ```
 
-###parse
-Parses the an HTML string as a DOM element.
+###append
+Append to the current $template.
 
 ```javascript
-$dom.parse("<div></div>"); //
+stik.controller("PostsCtrl", "List", function($elm, getPosts){
+  getPosts().then(function(posts){
+    var view;
+    posts.forEach(function(post){
+      view = "<span>" + post.content + "</span>";
+      $elm.append(view);
+    });
+  });
+});
+```
+
+###append
+Append to the current $template.
+
+```javascript
+stik.controller("TweetsCtrl", "List", function($elm, getTweets){
+  getTweets().then(function(tweets){
+    var view;
+    tweets.forEach(function(tweet){
+      view = "<span>" + tweet.content + "</span>";
+      $elm.prepend(view);
+    });
+  });
+});
+```
+
+###insertAfter
+Insert the new element after the $template.
+
+```javascript
+stik.behavior("duplicable", function($elm){
+  $elm.click(function(event){
+    $elm.insertAfter($elm.template);
+  });
+});
+```
+
+###insertBefore
+Insert the new element before the $template.
+
+```javascript
+stik.behavior("duplicable", function($elm){
+  $elm.click(function(event){
+    $elm.insertBefore($elm.template);
+  });
+});
 ```
 
 ###data
@@ -104,7 +151,7 @@ Captures all the `data-*` attributes defined in the template and gives you an ob
 ```
 
 ```javascript
-stik.behavior("lightsaber-clash", function($template, $dom){
+stik.behavior("lightsaber-clash", function($elm){
   $dom.data($template).force // "strong"
   $dom.data($template).direction // "downwards"
 });
