@@ -1,4 +1,4 @@
-// Stik-dom - Version: 0.6.0 | From: 30-6-2014
+// Stik-dom - Version: 0.7.0 | From: 1-7-2014
 (function( stik ){
   var methods = {},
       modules = {},
@@ -304,6 +304,126 @@
   stik.dom( "findAll", function(){
     return function( elm, selector ){
       return elm.querySelectorAll( selector );
+    };
+  });
+
+  stik.dom( "event", function(){
+    return function event( elm, type, callback, capture ){
+      elm.addEventListener( type, callback, capture || false );
+    };
+  });
+
+  stik.dom( "click", function( event ){
+    return function click( elm, callback, capture ){
+      event( elm, "click", callback, capture );
+    };
+  });
+
+  stik.dom( "doubleClick", function( event ){
+    return function doubleClick( elm, callback, capture ){
+      event( elm, "dblclick", callback, capture );
+    };
+  });
+
+  stik.dom( "mouseDown", function( event ){
+    return function mouseDown( elm, callback, capture ){
+      event( elm, "mousedown", callback, capture );
+    };
+  });
+
+  stik.dom( "mouseUp", function( event ){
+    return function mouseUp( elm, callback, capture ){
+      event( elm, "mouseup", callback, capture );
+    };
+  });
+
+  stik.dom( "mouseMove", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "mousemove", callback, capture );
+    };
+  });
+
+  stik.dom( "mouseOver", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "mouseover", callback, capture );
+    };
+  });
+
+  stik.dom( "mouseOut", function( event ){
+    return function( elm, callback, capture ){
+      event(elm, "mouseout", callback, capture );
+    };
+  });
+
+  stik.dom( "abort", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "abort", callback, capture );
+    };
+  });
+
+  stik.dom( "blur", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "blur", callback, capture );
+    };
+  });
+
+  stik.dom( "change", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "change", callback, capture );
+    };
+  });
+
+  stik.dom( "error", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "error", callback, capture );
+    };
+  });
+
+  stik.dom( "focus", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "focus", callback, capture );
+    };
+  });
+
+  stik.dom( "load", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "load", callback, capture );
+    };
+  });
+
+  stik.dom( "reset", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "reset", callback, capture );
+    };
+  });
+
+  stik.dom( "resize", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "resize", callback, capture );
+    };
+  });
+
+  stik.dom( "scroll", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "scroll", callback, capture );
+    };
+  });
+
+  stik.dom( "select", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "select", callback, capture );
+    };
+  });
+
+  stik.dom( "submit", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "submit", callback, capture );
+    };
+  });
+
+  stik.dom( "unload", function( event ){
+    return function( elm, callback, capture ){
+      event( elm, "unload", callback, capture );
     };
   });
 

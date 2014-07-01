@@ -624,6 +624,22 @@ describe("$dom", function(){
     });
   });
 
+  describe("event", function(){
+    it("should delegate to addEventListener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var event = stik.labs.dom({
+        name: "event"
+      }).run();
+
+      event(template, "click", function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("click", jasmine.any(Function), false);
+    });
+  });
+
   describe("click", function(){
     it("should create a listener", function(){
       var template = jasmine.createSpyObj("template", ["addEventListener"]);
@@ -636,7 +652,7 @@ describe("$dom", function(){
 
       expect(
         template.addEventListener
-      ).toHaveBeenCalledWith("click", jasmine.any(Function));
+      ).toHaveBeenCalledWith("click", jasmine.any(Function), false);
     });
   });
 
@@ -652,7 +668,279 @@ describe("$dom", function(){
 
       expect(
         template.addEventListener
-      ).toHaveBeenCalledWith("dblclick", jasmine.any(Function));
+      ).toHaveBeenCalledWith("dblclick", jasmine.any(Function), false);
+    });
+  });
+
+  describe("mouseDown", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var mouseDown = stik.labs.dom({
+        name: "mouseDown"
+      }).run();
+
+      mouseDown(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("mousedown", jasmine.any(Function), false);
+    });
+  });
+
+  describe("mouseUp", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var mouseUp = stik.labs.dom({
+        name: "mouseUp"
+      }).run();
+
+      mouseUp(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("mouseup", jasmine.any(Function), false);
+    });
+  });
+
+  describe("mouseMove", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var mouseMove = stik.labs.dom({
+        name: "mouseMove"
+      }).run();
+
+      mouseMove(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("mousemove", jasmine.any(Function), false);
+    });
+  });
+
+  describe("mouseOver", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var mouseOver = stik.labs.dom({
+        name: "mouseOver"
+      }).run();
+
+      mouseOver(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("mouseover", jasmine.any(Function), false);
+    });
+  });
+
+  describe("mouseOut", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var mouseOut = stik.labs.dom({
+        name: "mouseOut"
+      }).run();
+
+      mouseOut(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("mouseout", jasmine.any(Function), false);
+    });
+  });
+
+  describe("abort", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var abort = stik.labs.dom({
+        name: "abort"
+      }).run();
+
+      abort(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("abort", jasmine.any(Function), false);
+    });
+  });
+
+  describe("blur", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var blur = stik.labs.dom({
+        name: "blur"
+      }).run();
+
+      blur(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("blur", jasmine.any(Function), false);
+    });
+  });
+
+  describe("change", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var change = stik.labs.dom({
+        name: "change"
+      }).run();
+
+      change(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("change", jasmine.any(Function), false);
+    });
+  });
+
+  describe("error", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var error = stik.labs.dom({
+        name: "error"
+      }).run();
+
+      error(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("error", jasmine.any(Function), false);
+    });
+  });
+
+  describe("focus", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var focus = stik.labs.dom({
+        name: "focus"
+      }).run();
+
+      focus(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("focus", jasmine.any(Function), false);
+    });
+  });
+
+  describe("load", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var load = stik.labs.dom({
+        name: "load"
+      }).run();
+
+      load(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("load", jasmine.any(Function), false);
+    });
+  });
+
+  describe("reset", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var reset = stik.labs.dom({
+        name: "reset"
+      }).run();
+
+      reset(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("reset", jasmine.any(Function), false);
+    });
+  });
+
+  describe("resize", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var resize = stik.labs.dom({
+        name: "resize"
+      }).run();
+
+      resize(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("resize", jasmine.any(Function), false);
+    });
+  });
+
+  describe("scroll", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var scroll = stik.labs.dom({
+        name: "scroll"
+      }).run();
+
+      scroll(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("scroll", jasmine.any(Function), false);
+    });
+  });
+
+  describe("select", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var select = stik.labs.dom({
+        name: "select"
+      }).run();
+
+      select(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("select", jasmine.any(Function), false);
+    });
+  });
+
+  describe("submit", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var submit = stik.labs.dom({
+        name: "submit"
+      }).run();
+
+      submit(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("submit", jasmine.any(Function), false);
+    });
+  });
+
+  describe("unload", function(){
+    it("should create a listener", function(){
+      var template = jasmine.createSpyObj("template", ["addEventListener"]);
+
+      var unload = stik.labs.dom({
+        name: "unload"
+      }).run();
+
+      unload(template, function(){});
+
+      expect(
+        template.addEventListener
+      ).toHaveBeenCalledWith("unload", jasmine.any(Function), false);
     });
   });
 
