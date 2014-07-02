@@ -187,7 +187,7 @@ stik.behavior("shine-when-new", function($elm){
 ```
 
 ###event
-A simple shortcut to addEventListener.
+A simple shortcut to addEventListener applyed to the current template.
 
 ```javascript
 stik.behavior("active-on-focus", function($elm){
