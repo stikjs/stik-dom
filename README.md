@@ -177,7 +177,7 @@ stik.behavior("removable", function($elm){
 ```
 
 ###findAll
-Finds the first element for a given css selector within the current template. It simply delegates to querySelector.
+Finds all the elements for a given css selector within the current template. It simply delegates to querySelectorAll.
 
 ```javascript
 stik.behavior("shine-when-new", function($elm){
