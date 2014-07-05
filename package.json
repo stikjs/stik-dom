@@ -1,7 +1,7 @@
 {
   "name": "stik-dom",
   "version": "0.7.1",
-  "description": "DOM manipulation utils for Stik.JS",
+  "description": "DOM manipulation interface for Stik.JS",
   "main": "dist/stik-dom.js",
   "scripts": {
     "test": "gulp test"

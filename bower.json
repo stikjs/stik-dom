@@ -1,0 +1,21 @@
+{
+  "name": "stik-dom",
+  "version": "0.7.1",
+  "homepage": "https://github.com/stikjs/stik-dom",
+  "authors": [
+    "dom"
+  ],
+  "description": "DOM manipulation interface for Stik.JS",
+  "main": "dist/stik-dom.js",
+  "keywords": [
+    "stikjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "specs",
+    "src",
+  ]
+}
