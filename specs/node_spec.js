@@ -968,5 +968,20 @@ describe("$dom", function(){
 
       expect(elm.hasClass("active")).toBeFalsy();
     });
+
+    it("should return another $elm object after a dom query", function(){
+      var template = document.createElement("div");
+      template.innerHTML = "<span></span>";
+
+      var elm = stik.labs.boundary({
+        name: "$elm"
+      }).run({
+        $template: template
+      });
+
+      span = elm.find("span");
+
+      expect(span.hasClass).not.toBeUndefined();
+    });
   });
 });

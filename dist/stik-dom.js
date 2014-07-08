@@ -1,4 +1,4 @@
-// Stik-dom - Version: 0.7.1 | From: 1-7-2014
+// Stik-dom - Version: 0.8.0 | From: 9-7-2014
 (function( stik ){
   var methods = {},
       modules = {},
@@ -54,22 +54,35 @@
     as: "$elm",
     resolvable: true,
     to: function( $template, $dom ){
-      var elm = {};
-      var methods = stik.dom.signatures();
-      var i = methods.length;
-      elm.template = $template;
-      while (i--){
-        (function(method){
-          elm[method] = function(){
-            var args = Array.prototype.slice.call(arguments);
-            args.unshift($template);
-            return $dom[method].apply({}, args);
-          };
-        })(methods[i]);
-      }
-      return elm;
+      return toElm( $template, $dom );
     }
   });
+
+  stik.dom( "toElm", function( $dom ){
+    return function( template ){
+      return toElm( template, $dom );
+    };
+  });
+
+  function toElm( $template, $dom ){
+    var elm = {};
+    var methods = stik.dom.signatures();
+    var i = methods.length;
+    elm.template = $template;
+    while ( i-- ){
+      (function( method ){
+        elm[ method ] = function(){
+          var args = Array.prototype.slice.call( arguments );
+          args.unshift( $template );
+          var result = $dom[ method ].apply( {}, args );
+          return (
+            result && result.querySelector ? toElm( result ) : result
+          )
+        };
+      })( methods[ i ] );
+    }
+    return elm;
+  };
 
   stik.dom( "hasClass", function(){
     return function hasClass( elm, selector ){
