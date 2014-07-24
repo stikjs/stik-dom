@@ -25,7 +25,7 @@
           args.unshift( $template );
           var result = $dom[ method ].apply( {}, args );
           return (
-            result && result.querySelector ? toElm( result ) : result
+            result && result.querySelector ? toElm( result, $dom ) : result
           )
         };
       })( methods[ i ] );

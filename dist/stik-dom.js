@@ -1,4 +1,4 @@
-// Stik-dom - Version: 0.8.0 | From: 9-7-2014
+// Stik-dom - Version: 0.8.1 | From: 24-7-2014
 (function( stik ){
   var methods = {},
       modules = {},
@@ -76,7 +76,7 @@
           args.unshift( $template );
           var result = $dom[ method ].apply( {}, args );
           return (
-            result && result.querySelector ? toElm( result ) : result
+            result && result.querySelector ? toElm( result, $dom ) : result
           )
         };
       })( methods[ i ] );
